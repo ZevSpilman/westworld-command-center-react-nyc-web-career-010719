@@ -1,18 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
 import '../stylesheets/Host.css'
 import { Card } from 'semantic-ui-react'
+import HostInfo from './HostInfo'
 
-const Host = () => {
+class Host extends Component {
+  constructor(){
+    super()
+    this.state = {
+      selected: "host"
+    }
+  }
 
-  return(
-    <Card
-      className="host selected"
-      {/* NOTE: The className "host selected" renders a different style than simply "host". */}
-      onClick={ /* On Click what? */}
-      image={/* I wonder what goes here...*/}
-      raised
-    />
-  )
+  handle = (e) => {
+    this.props.hostFunc(this.props.id)
+    if (this.state.selected === "host selected"){
+      this.setState({selected: "host"})
+    }
+    else {
+      this.setState({selected: "host selected"})
+    }
+  }
+
+  render(){
+    return(
+      <div>
+      <Card
+        id={this.props.id}
+        className={this.state.selected}
+        onClick={() => this.handle()}
+        image={this.props.img}
+        raised
+      />
+      </div>
+    )
+  }
+
 }
 
 export default Host

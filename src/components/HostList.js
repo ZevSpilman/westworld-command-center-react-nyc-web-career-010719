@@ -1,11 +1,11 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
-
-const HostList = () => {
+import Host from './Host'
+const HostList = (props) => {
 
   return(
     <Card.Group itemsPerRow={6}>
-      {/* What do you think, partner? */}
+    {props.hosts.map(host => <Host id={host.id} img={host.imageUrl} hostFunc={props.hostFunc}/>)}
     </Card.Group>
   )
 }
